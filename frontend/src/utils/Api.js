@@ -106,7 +106,7 @@ const onError = res => {
 }
 
 const api = new Api({
-  url: 'http://localhost:3005/',
+  url: 'https://api.zubkov.nomoredomains.xyz/',
   headers: {
     'Content-Type': 'application/json',
   }

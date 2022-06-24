@@ -66,7 +66,6 @@ class Auth {
 
 const auth = new Auth({
   baseUrl: 'https://api.zubkov.nomoredomains.xyz'
-  // baseUrl: 'http://localhost:3005'
 })
 
 export default auth

@@ -5,3 +5,4 @@
 
 Frontend: https://zubkov.nomoredomains.xyz/
 Backend: https://api.zubkov.nomoredomains.xyz/
+IP Виртуальной машины: 130.193.34.158
