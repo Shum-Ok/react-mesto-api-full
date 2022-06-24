@@ -1,6 +1,6 @@
 // Массив доменов, с которых разрешены кросс-доменные запросы
 const allowedCors = [
-  'http://localhost:3001',
+  'http://localhost:3000',
   'http://zubkov.nomoredomains.xyz/',
   'https://zubkov.nomoredomains.xyz/',
 ];

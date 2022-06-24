@@ -106,10 +106,8 @@ const onError = res => {
 }
 
 const api = new Api({
-  // url: 'https://nomoreparties.co/v1/cohort-37/',
   url: 'http://localhost:3005/',
   headers: {
-    // authorization: '975e0bed-b421-4a9a-8ad5-c6281150f147',
     'Content-Type': 'application/json',
   }
 })

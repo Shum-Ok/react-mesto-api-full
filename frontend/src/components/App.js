@@ -40,54 +40,30 @@ function App() {
   const [cards, setCards] = useState([])
   const [userEmail, setUserEmail] = useState(null)
 
-  function handlTokenCheck() {
-    const token = localStorage.getItem('token')
-    if(token) {
-      // console.log('token =>>', token)
-      auth
-        .tokenValid(token)
-        .then(res => {
-          console.log('res =>>', res)
-          if(res) {
-            setLoggedIn(true)
-            setUserEmail(res.email)
-            setCurrentUser(res)
-            history.push('/')
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      auth.tokenValid(token)
+        .then((res) => {
+          if (res) {
+            setLoggedIn(true);
+            setUserEmail(res.email);
           }
         })
-        .catch((err) => console.log(err))
+        .catch((err) => console.log(`Не удалось получить токен: ${err}`));
     }
-  }
-
-  // useEffect(() => {
-  //   const token = localStorage.getItem('token');
-  //   if (token) {
-  //     auth.tokenValid(token)
-  //       .then((res) => {
-  //         if (res) {
-  //           setLoggedIn(true);
-  //           setUserEmail(res.email);
-  //         }
-  //       })
-  //       .catch((err) => console.log(`Не удалось получить токен: ${err}`));
-  //   }
-  // }, []);
+  }, []);
 
   useEffect(() => {
-    handlTokenCheck()
-    // console.log('loggedIn =>', !loggedIn)
-
-    if(!loggedIn) {
+    if (loggedIn === true) {
       api.getAllData()
-        .then(([data, user]) => {
-          // console.log('data =>', data)
-          // console.log('user =>', user)
-          setCards(data)
+        .then(([cards, user]) => {
+          setCards(cards)
           setCurrentUser(user)
-          console.log('user =>', user)
         })
+        .catch(err => console.log(err))
     }
-  }, [])
+  }, [loggedIn])
 
   useEffect(() => {
     if(loggedIn) {
@@ -95,11 +71,8 @@ function App() {
     }
   }, [loggedIn, history])
 
-
   function handleCardLike(card) {
-    const isLiked = card.likes.some(i => i._id === currentUser._id) // Проверяем, есть ли уже лайк на этой карточке
-    console.log(card.likes)
-    console.log(currentUser._id)
+    const isLiked = card.likes.some((i) => i === currentUser._id); // Проверяем, есть ли уже лайк на этой карточке
     api.changeLikeCardStatus(card._id, isLiked) // Отправляем запрос в API и получаем обновлённые данные карточки
       .then((newCard) => {
         setCards((state) => state.map((c) => c._id === card._id ? newCard : c))
@@ -203,24 +176,6 @@ function App() {
       })
       .catch((err) => console.log(err))
   }
-
-  // function handlTokenCheck() {
-  //   const token = localStorage.getItem('token')
-  //   if(token) {
-  //     // console.log('token =>>', token)
-  //     auth
-  //       .tokenValid(token)
-  //       .then(res => {
-  //         // console.log('res =>>', res)
-  //         if(res) {
-  //           setLoggedIn(true)
-  //           setUserEmail(res.email)
-  //           history.push('/')
-  //         }
-  //       })
-  //       .catch((err) => console.log(err))
-  //   }
-  // }
 
   function handleSingOut() {
     setLoggedIn(false)
