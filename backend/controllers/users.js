@@ -48,7 +48,8 @@ const createUser = (req, res, next) => {
           }
           next(err);
         });
-    });
+    })
+    .catch(next);
 };
 
 // авторизация пользователя

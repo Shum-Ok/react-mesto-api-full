@@ -18,10 +18,10 @@ const cors = (req, res, next) => {
     res.header('Access-Control-Allow-Origin', origin);
   }
   // устанавливаем заголовок, который разрешает браузеру запросы из любого источника
-  res.header('Access-Control-Allow-Origin', "*");
+  res.header('Access-Control-Allow-Origin', '*');
 
   // Значение для заголовка Access-Control-Allow-Methods по умолчанию (разрешены все типы запросов)
-  const DEFAULT_ALLOWED_METHODS = "GET,HEAD,PUT,PATCH,POST,DELETE";
+  const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
 
   // Если это предварительный запрос, добавляем нужные заголовки
   if (method === 'OPTIONS') {
