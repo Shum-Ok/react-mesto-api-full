@@ -3,28 +3,20 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const { errors, celebrate, Joi } = require("celebrate");
-
-const { requestLogger, errorLogger } = require("./middlewares/logger");
-
+// routes
 const { userRouter } = require("./routes/users");
 const { cardRouter } = require("./routes/cards");
+// controllers
 const { login, createUser } = require("./controllers/users");
+// middlewares
+const { requestLogger, errorLogger } = require("./middlewares/logger");
 const auth = require("./middlewares/auth");
 const error = require("./middlewares/error");
 const cors = require("./middlewares/cors");
-
+// utils
 const { regExpUrl } = require("./utils/const");
-
+// errors
 const NotFoundError = require("./errors/NotFoundError");
-
-const validatorLogin = (req, res, next) => {
-  celebrate({
-    body: Joi.object().keys({
-      email: Joi.string().required().email(),
-      password: Joi.string().required(),
-    }),
-  });
-};
 
 const app = express();
 
