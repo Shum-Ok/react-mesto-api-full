@@ -21,6 +21,7 @@ const NotFoundError = require("./errors/NotFoundError");
 const app = express();
 
 // mongoose.connect("mongodb://localhost:27017/mestodb");
+// укажите свой адрес на mongodb
 mongoose.connect(
   "mongodb+srv://admin:272832@admin.kfu0x9w.mongodb.net/movies?retryWrites=true&w=majority",
   () => {

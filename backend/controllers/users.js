@@ -29,7 +29,7 @@ const createUser = async (req, res, next) => {
       avatar,
     });
 
-    // сохраняем документ в базеданных
+    // сохраняем документ в базе данных
     await doc.save();
 
     res.status(201).json({
