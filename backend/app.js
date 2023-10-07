@@ -20,18 +20,11 @@ const NotFoundError = require("./errors/NotFoundError");
 
 const app = express();
 
-<<<<<<< HEAD
 // mongoose.connect("mongodb://localhost:27017/mestodb");
 // укажите свой адрес на mongodb
-=======
-// mongoose.connect("your url mestodb");
->>>>>>> 90bfd99d0ad84e32a5cf678ef3df5499277a919d
-mongoose.connect(
-  "mongodb://localhost:27017/mestodb",
-  () => {
-    console.log("BD ok");
-  }
-);
+mongoose.connect("mongodb://localhost:27017/mestodb", () => {
+  console.log("BD ok");
+});
 
 const { PORT = 3000 } = process.env;
 
