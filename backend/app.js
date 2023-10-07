@@ -20,9 +20,9 @@ const NotFoundError = require("./errors/NotFoundError");
 
 const app = express();
 
-// mongoose.connect("mongodb://localhost:27017/mestodb");
+// mongoose.connect("your url mestodb");
 mongoose.connect(
-  "mongodb+srv://admin:272832@admin.kfu0x9w.mongodb.net/movies?retryWrites=true&w=majority",
+  "mongodb://localhost:27017/mestodb",
   () => {
     console.log("BD ok");
   }
